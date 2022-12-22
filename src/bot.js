@@ -14,20 +14,23 @@ const retweet = () => {
   TwitterBot.get("search/tweets", params, (err, data) => {
     // when no errors
     if (!err) {
-      console.log(`====> Tweets ${data}`);
-      let retweetID = data.statuses[3].id_str;
-      TwitterBot.post(
-        "statuses/retweet/:id",
-        { id: retweetID },
-        (err, res) => {
-          if (res) {
-            console.log(`====> RETWEET SUCCESS ${retweetID}`);
+      console.log(`====> Number of Tweets: ${data.statuses.length}`);
+      for (let i = 0; i < data.statuses.length; i++) {
+        let retweetID = data.statuses[i].id_str;
+        TwitterBot.post(
+          "statuses/retweet/:id",
+          { id: retweetID },
+          (err, res) => {
+            if (res) {
+              console.log(`====> RETWEET SUCCESS ${retweetID}`);
+            }
+            if (err) {
+              console.log(`====> ERROR in RETWEET ${err}`);
+            }
           }
-          if (err) {
-            console.log(`====> ERROR in RETWEET ${err}`);
-          }
-        }
-      );
+        );        
+      }        
+
     } else {
       console.log(`====> ERROR ${err}`);
     }
