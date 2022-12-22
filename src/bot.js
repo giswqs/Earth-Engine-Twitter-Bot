@@ -15,7 +15,7 @@ const retweet = () => {
     // when no errors
     if (!err) {
       console.log(`====> Tweets ${data}`);
-      let retweetID = data.statuses[1].id_str;
+      let retweetID = data.statuses[3].id_str;
       TwitterBot.post(
         "statuses/retweet/:id",
         { id: retweetID },
