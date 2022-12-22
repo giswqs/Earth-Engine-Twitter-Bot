@@ -1,4 +1,4 @@
-name: Tweet Image
+name: Retweet
 
 on:
   workflow_dispatch:
