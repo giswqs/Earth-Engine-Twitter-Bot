@@ -9,7 +9,7 @@ const retweet = () => {
   const params = {
     q: "#EarthEngine",
     result_type: "recent",
-    count: 50,
+    count: 20,
     lang: "en",
   };
   TwitterBot.get("search/tweets", params, (err, data) => {
